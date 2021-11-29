@@ -7,7 +7,7 @@ function pullInfo() {
     const newSearch = document.getElementById("cityInput")
     const cityName = document.getElementById("cityName")
     cityName.innerHTML = "--" + newSearch.value + "--"
-}
+
 
 fetch("https://api.openweathermap.org/data/2.5/forecast?q='+newSearch.value+'&appid=24f9efd8440e18d85fdf4f69350c73a9")
 .then(response => response.json())
@@ -18,6 +18,25 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q='+newSearch.value+'&ap
     for (i = 0; i < 5; i++) {
         document.getElementById("day" + (i+1) + "High").innerHTML = "High:" + Number(data.list[i].main.temp_max -273.98)
     }
-        
+    for (i = 0; i < 5; i++) {
+        document.getElementById("img" + (i + 1)).src = " http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon+".png";
+    }    
+    })
+
+.catch(err => alert("Did Not Work"))
+}
+
+const d = new Date();
+const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+
+function checkDay(day){
+    if(day + d.getDay() > 6){
+        return day + d.getDay()-7
+    } else {
+        return day + d.getDay()
     }
-)
+}
+
+for (i = 0; i < 5; i++) {
+    document.getElementById("day" + (i+1)).innerHTML = weekday[checkDay]
+}
