@@ -1,5 +1,10 @@
-//API key - d1f61f68871fcf3bb7b40dbb85c8fd5d
+//API key - 24f9efd8440e18d85fdf4f69350c73a9
 
 //https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 
 
+function pullInfo() {
+    const newName = document.getElementById("cityInput")
+    const cityName = document.getElementById("cityName")
+    cityName.innerHTML = "--" + newName.value + "--"
+}

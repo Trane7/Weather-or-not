@@ -5,92 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Or Not</title>
-    <link rel="stylesheet" href="">
-    <script scr=""></script>
+    <link rel="stylesheet" href="./assets/style.css">
+    
 </head>
 <body>
-  <div class="card">
-      <div class="search">
-        <input type="text" class="search-bar">
-        <button><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1.5em" width="1.5em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M11 2c4.968 0 9 4.032 9 9s-4.032 9-9 9-9-4.032-9-9 4.032-9 9-9zm0 16c3.867 0 7-3.133 7-7 0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7zm8.485.071l2.829 2.828-1.415 1.415-2.828-2.829 1.414-1.414z"></path></g></svg></button>
-      </div>
-      <div class="weather">
-        <h2 class="city">Weather In Denver</h2>
-        <div class="temp">45°F</div>
-        <img src="" alt="" class="icon" />
-        <div class="description">Cloudy</div>
-        <div class="wind">6 mph</div>
-        <div class="humidity">70%</div>
-      </div>
-  </div>
+    <center>
+        <h1 id="line1">Weather Or Not</h1>
+        <p id="inputContainer">Location: <input type="text" id="cityInput"></p>
+        <button>Search</button>
+        <h2 id="cityName">--London--</h2> 
+    </center>
+    <div id="weatherContainer">
+        <div id="iconContainer">
+            <div class="icons">
+               <p class="weather" id="day1"></p>
+               <div class="image"><img src="fill-in" class="imgClass" id="img1" alt=""></div> 
+               <p class="minValues" id="day1min">Loading...</p>
+               <p class="maxValues" id="day1Max">Loading...</p>
+            </div>
+            <div class="icons">
+               <p class="weather" id="day2"></p>
+               <div class="image"><img src="fill-in" class="imgClass" id="img2" alt=""></div> 
+               <p class="minValues" id="day2min">Loading...</p>
+               <p class="maxValues" id="day2Max">Loading...</p>
+            </div>
+            <div class="icons">
+               <p class="weather" id="day3"></p>
+               <div class="image"><img src="fill-in" class="imgClass" id="img3" alt=""></div> 
+               <p class="minValues" id="day3min">Loading...</p>
+               <p class="maxValues" id="day3Max">Loading...</p>
+            </div>
+            <div class="icons">
+               <p class="weather" id="day4"></p>
+               <div class="image"><img src="fill-in" class="imgClass" id="img4" alt=""></div> 
+               <p class="minValues" id="day4min">Loading...</p>
+               <p class="maxValues" id="day4Max">Loading...</p>
+            </div>
+            <div class="icons">
+               <p class="weather" id="day5"></p>
+               <div class="image"><img src="fill-in" class="imgClass" id="img5" alt=""></div> 
+               <p class="minValues" id="day5min">Loading...</p>
+               <p class="maxValues" id="day5Max">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/app.js"></script>
 </body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/minty/bootstrap.min.css"
-  />
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather Or Not</title>
-  </head>
-  <body>
-    <body>
-        <nav class="navbar navbar-dark bg-primary mb-3">
-            <div class="container">
-                <a href="#" class="navbar-brand">Weather Or Not
-                </a>
-            </div>
-        </nav>
-        <div class="container searchContainer">
-            <div class="search card card-body">
-                <h1>Get The Weather Near You Today!</h1>
-                <p class="lead">Type In Your Location</p>
-                <input type="text" id="searchUser" class="form-control" placeholder="Location">
-            </div>
-            <br>
-            <div id="profile"></div>
-        </div>
-        <div class="container text-center mt-2">
-            <button class="btn btn-primary" id="submit">Submit</button>
-        </div>
-        
-        <div id="content">
-
-        </div>
-        <footer class="mt-5 p-3 text-center bg-light">
-             Weather Or Not &copy;
-        </footer>
-  </body>
-  <script src="fetch.js"></script>
-  <script src="ui.js"></script>
-  <script src="app.js"></script>
 </html>
