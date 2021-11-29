@@ -57,7 +57,7 @@ body{
     font-weight: 800;
 }
 
-.current-day .conditions{
+.current-day .condition{
     display: flex;
     flex-direction: column;
     background: rgba(36, 36, 36, 0.8); /* come back to this*/
@@ -66,7 +66,7 @@ body{
     border: 1px solid #eee;
 }
 
-.current-day .conditions .weather-conditions{
+.current-day .condition .weather-condition{
     display: flex;
     justify-content: space-between;
 }
@@ -90,7 +90,7 @@ body{
 }
 
 .forecast .today .day{
-    font-size: 40px;
+    font-size: 35px;
     padding: 5px 15px;
     background: black;
     border-radius: 40px;
@@ -98,7 +98,7 @@ body{
 }
 
 .forecast .today .temp{
-    font-size: 16px;
+    font-size: 20px;
     padding-top: 10px;
 }
 
