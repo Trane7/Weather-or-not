@@ -13,10 +13,10 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q='+newSearch.value+'&ap
 .then(response => response.json())
 .then(data => {
     for (i = 0; i < 5; i++) {
-        document.getElementById("day" + (i+1) + "Low").innerHTML = "Low:" + Number(data.list[i].main.temp_min -272.71)
+        document.getElementById("day" + (i+1) + "Min").innerHTML = "Min:" + Number(data.list[i].main.temp_min -272.71)
     }
     for (i = 0; i < 5; i++) {
-        document.getElementById("day" + (i+1) + "High").innerHTML = "High:" + Number(data.list[i].main.temp_max -273.98)
+        document.getElementById("day" + (i+1) + "Max").innerHTML = "Max:" + Number(data.list[i].main.temp_max -273.98)
     }
     for (i = 0; i < 5; i++) {
         document.getElementById("img" + (i + 1)).src = " http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon+".png";
@@ -24,6 +24,11 @@ fetch("https://api.openweathermap.org/data/2.5/forecast?q='+newSearch.value+'&ap
     })
 
 .catch(err => alert("Did Not Work"))
+}
+
+function homeScreen() {
+    document.getElementById("cityInput").defaultVaule = "Rochester";
+    pullInfo();
 }
 
 const d = new Date();
