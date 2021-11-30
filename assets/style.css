@@ -7,7 +7,7 @@
 }
 
 body{
-    color: #fff; /* come back to this*/
+    color: skyblue; /* come back to this*/
     background-image: url(../assets/Images/night-city.jpg);
     background-repeat: no-repeat;
     background-size:cover;
@@ -77,7 +77,7 @@ body{
     position: fixed;
     bottom: 0;
     display: flex;
-    color: white;
+    color: skyblue;
     width: 100%;
     align-items: center;
     justify-content: center;

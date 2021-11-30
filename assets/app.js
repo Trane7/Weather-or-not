@@ -1,7 +1,3 @@
-
-
-//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-
 const timeEL = document.getElementById('time')
 const dateEl = document.getElementById('date')
 const currentWeatherConditionEl = document.getElementById('current-weather-condition')
@@ -50,6 +46,9 @@ function getWeatherData () {
 function showWeatherData (data){
     let {humidity, wind_speed, uvi} = data.current
 
+    timeZone.innerHTML = data.timeZone
+    countryEL.innerHTML = data.lat + 'N ' + data.lon + 'E'
+
     currentWeatherConditionEl.innerHTML = 
     `<div class="weather-condition">
         <div>Humidity</div>
@@ -62,7 +61,34 @@ function showWeatherData (data){
     <div class="weather-condition">
         <div>UV Index</div>
         <div>${uvi}</div>
-    </div>`
+    </div>
+    
+    `
 
-   
+   let otherDayForecast = ''
+    data.daily.forEach((day, idx) => {
+       if(idx == 0){
+            tempEL.innerHTML = 
+            `<img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@5x.png" alt="weather icon" class="w-icon">
+            <div class="other">
+                <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
+                <div class="temp">High - ${day.temp.day}&#176; F</div>
+                <div class="temp">Low - ${day.temp.night}&#176; F</div>
+            </div>
+            `
+        
+        
+       }else {
+           otherDayForecast += `
+            <div class="weather-forecast-condition">
+                <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
+                <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">High - ${day.temp.day}&#176; F</div>
+                <div class="temp">Low - ${day.temp.night}&#176; F</div>
+            </div>
+           ` 
+       }
+   })
+
+   forecastEL.innerHTML = otherDayForecast
 }
