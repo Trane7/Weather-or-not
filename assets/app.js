@@ -5,6 +5,15 @@ const timeZone = document.getElementById('time-zone')
 const countryEL = document.getElementById('country')
 const forecastEL = document.getElementById('weather-forecast')
 const tempEL = document.getElementById('temp')
+const locationForm = document.getElementById('location-form');
+
+locationForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    console.log("submittd form");
+    const location = document.querySelector(".location-search").value;
+    console.log(`location: ${location}`);
+    timeZone.textContent = location;
+});
 
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
@@ -23,7 +32,7 @@ setInterval(() => {
     
     timeEL.innerHTML = hoursIn12HrFormat + ':' + minutes + ' ' + `<span id="am-pm">${ampm}</span>`
 
-    dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month]
+    //dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month]
 
 }, 1000)
 
