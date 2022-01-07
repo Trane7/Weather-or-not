@@ -13,6 +13,25 @@ locationForm.addEventListener("submit", function(event) {
     const location = document.querySelector(".location-search").value;
     console.log(`location: ${location}`);
     timeZone.textContent = location;
+
+    fetch (`https://api.openweathermap.org/data/2.5/forecast?q=${location},us&exclude=hourly,minutely&units=imperial&appid=${API_KEY}`)
+    .then(res =>{
+        if(res.status > 200) {
+            throw new Error('something went wrong')
+        }
+        
+        return res.json()})
+    .then(data => {
+        const {lat, lon} = data.city.coord
+
+        fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&units=imperial&appid=${API_KEY}`)
+        .then(res => res.json())
+        .then(data => {
+            
+            console.log(data)
+            showWeatherData(data)
+            })
+        })
 });
 
 const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
@@ -22,17 +41,20 @@ const API_KEY = '24f9efd8440e18d85fdf4f69350c73a9'
 
 setInterval(() => {
     const time = new Date()
-    const month = time.getMonth()
-    const date = time.getDate()
-    const day = time.getDay()
+    // const month = time.getMonth()
+    // const date = time.getDate()
+    // const day = time.getDay()
     const hour = time.getHours()
     const hoursIn12HrFormat = hour >= 13 ? hour %12: hour
-    const minutes = time.getMinutes()
+    let minutes = time.getMinutes().toString()
+    if(minutes.length === 1) {
+        minutes = "0" + minutes
+    }
     const ampm = hour >=12 ? 'PM' : 'AM'
     
     timeEL.innerHTML = hoursIn12HrFormat + ':' + minutes + ' ' + `<span id="am-pm">${ampm}</span>`
 
-    //dateEl.innerHTML = days[day] + ', ' + date + ' ' + months[month]
+    dateEl.innerHTML = time.toLocaleDateString()
 
 }, 1000)
 
@@ -54,8 +76,7 @@ function getWeatherData () {
 
 function showWeatherData (data){
     let {humidity, wind_speed, uvi} = data.current
-
-    timeZone.innerHTML = data.timeZone
+    //timeZone.innerHTML = data.timeZone
     countryEL.innerHTML = data.lat + 'N ' + data.lon + 'E'
 
     currentWeatherConditionEl.innerHTML = 
@@ -81,8 +102,8 @@ function showWeatherData (data){
             `<img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@5x.png" alt="weather icon" class="w-icon">
             <div class="other">
                 <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
-                <div class="temp">High - ${day.temp.day}&#176; F</div>
-                <div class="temp">Low - ${day.temp.night}&#176; F</div>
+                <div class="temp">High  ${day.temp.day}&#176; F</div>
+                <div class="temp">Low  ${day.temp.night}&#176; F</div>
             </div>
             `
         
@@ -92,8 +113,8 @@ function showWeatherData (data){
             <div class="weather-forecast-condition">
                 <div class="day">${window.moment(day.dt*1000).format('ddd')}</div>
                 <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="weather icon" class="w-icon">
-                <div class="temp">High - ${day.temp.day}&#176; F</div>
-                <div class="temp">Low - ${day.temp.night}&#176; F</div>
+                <div class="temp">High  ${day.temp.day}&#176; F</div>
+                <div class="temp">Low  ${day.temp.night}&#176; F</div>
             </div>
            ` 
        }
